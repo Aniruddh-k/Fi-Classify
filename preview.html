@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fi-Classify | Finance Document Classification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        accent: {
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-all-300 {
+                transition: all 300ms ease-in-out;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="h-10 w-10 rounded-md bg-gradient-to-r from-primary-600 to-primary-800 flex items-center justify-center text-white font-bold text-xl">FC</div>
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-2xl font-bold text-secondary-800">Fi-Classify</h1>
+                        <p class="text-sm text-secondary-500">Finance Document Classification</p>
+                    </div>
+                </div>
+                <!-- Removed extra navbar buttons -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Hero Section -->
+        <section class="mb-12">
+            <div class="bg-gradient-to-r from-primary-700 to-primary-900 rounded-2xl shadow-xl overflow-hidden">
+                <div class="px-6 py-12 md:p-12 text-center md:text-left md:flex md:items-center">
+                    <div class="md:w-2/3 md:pr-8">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white text-shadow mb-4">
+                            AI Document Classification
+                        </h2>
+                        <p class="text-primary-100 text-lg mb-6">
+                            Automatically classify your financial documents into 16 different categories with our advanced AI technology.
+                        </p>
+                    </div>
+                    <div class="hidden md:block md:w-1/3">
+                        <div class="relative h-64 w-64 mx-auto">
+                            <div class="absolute inset-0 bg-white bg-opacity-10 rounded-full animate-pulse"></div>
+                            <div class="absolute inset-4 bg-white bg-opacity-20 rounded-full"></div>
+                            <div class="absolute inset-8 bg-white bg-opacity-30 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upload Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6 md:p-8">
+                    <h3 class="text-2xl font-bold text-secondary-800 mb-4">Upload Your Document</h3>
+                    <p class="text-secondary-600 mb-6">Drag and drop your financial document or click to browse files.</p>
+                    
+                    <div class="border-2 border-dashed border-secondary-300 rounded-lg p-8 text-center hover:border-primary-400 transition-all-300 cursor-pointer bg-secondary-50 hover:bg-secondary-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-secondary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <p class="mt-4 text-sm text-secondary-600">
+                            PDF, DOC, DOCX, XLS, XLSX, JPG, PNG (max 10MB)
+                        </p>
+                        <input type="file" class="hidden" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" />
+                        <button class="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                            Browse Files
+                        </button>
+                    </div>
+
+                    <div class="mt-6 flex justify-end">
+                        <button class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                            Classify Document
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section (Initially Hidden) -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6 md:p-8">
+                    <h3 class="text-2xl font-bold text-secondary-800 mb-4">Classification Results</h3>
+                    
+                    <div class="bg-primary-50 border border-primary-200 rounded-lg p-6 mb-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-lg font-semibold text-secondary-800">Document Classified</h4>
+                                <p class="text-secondary-600">Your document has been classified as:</p>
+                                <p class="text-xl font-bold text-primary-700 mt-2">Invoice</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-secondary-200 rounded-lg overflow-hidden">
+                        <div class="bg-secondary-50 px-4 py-3 border-b border-secondary-200">
+                            <h4 class="font-medium text-secondary-700">Confidence Scores</h4>
+                        </div>
+                        <div class="divide-y divide-secondary-200">
+                            <div class="px-4 py-3 flex justify-between items-center">
+                                <span class="text-secondary-700 font-medium">Invoice</span>
+                                <div class="flex items-center">
+                                    <div class="w-48 bg-secondary-200 rounded-full h-2.5">
+                                        <div class="bg-primary-600 h-2.5 rounded-full" style="width: 92%"></div>
+                                    </div>
+                                    <span class="ml-3 text-secondary-700 font-medium">92%</span>
+                                </div>
+                            </div>
+                            <div class="px-4 py-3 flex justify-between items-center">
+                                <span class="text-secondary-700 font-medium">Form</span>
+                                <div class="flex items-center">
+                                    <div class="w-48 bg-secondary-200 rounded-full h-2.5">
+                                        <div class="bg-secondary-400 h-2.5 rounded-full" style="width: 5%"></div>
+                                    </div>
+                                    <span class="ml-3 text-secondary-700 font-medium">5%</span>
+                                </div>
+                            </div>
+                            <div class="px-4 py-3 flex justify-between items-center">
+                                <span class="text-secondary-700 font-medium">Letter</span>
+                                <div class="flex items-center">
+                                    <div class="w-48 bg-secondary-200 rounded-full h-2.5">
+                                        <div class="bg-secondary-400 h-2.5 rounded-full" style="width: 3%"></div>
+                                    </div>
+                                    <span class="ml-3 text-secondary-700 font-medium">3%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section>
+            <h3 class="text-2xl font-bold text-secondary-800 mb-6">Document Categories</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Category Cards -->
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-all-300 p-4 border border-secondary-100">
+                    <div class="h-10 w-10 rounded-md bg-primary-100 text-primary-700 flex items-center justify-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-secondary-800">Advertisement</h4>
+                    <p class="text-sm text-secondary-500 mt-1">Marketing materials and promotional content</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-all-300 p-4 border border-secondary-100">
+                    <div class="h-10 w-10 rounded-md bg-primary-100 text-primary-700 flex items-center justify-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-secondary-800">Budget</h4>
+                    <p class="text-sm text-secondary-500 mt-1">Financial planning and allocation documents</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-all-300 p-4 border border-secondary-100">
+                    <div class="h-10 w-10 rounded-md bg-primary-100 text-primary-700 flex items-center justify-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-secondary-800">Email</h4>
+                    <p class="text-sm text-secondary-500 mt-1">Electronic mail communications</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-all-300 p-4 border border-secondary-100">
+                    <div class="h-10 w-10 rounded-md bg-primary-100 text-primary-700 flex items-center justify-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-secondary-800">File Folder</h4>
+                    <p class="text-sm text-secondary-500 mt-1">Document organization and storage</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-all-300 p-4 border border-secondary-100">
+                    <div class="h-10 w-10 rounded-md bg-primary-100 text-primary-700 flex items-center justify-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-secondary-800">Form</h4>
+                    <p class="text-sm text-secondary-500 mt-1">Structured documents for data collection</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-all-300 p-4 border border-secondary-100">
+                    <div class="h-10 w-10 rounded-md bg-primary-100 text-primary-700 flex items-center justify-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-secondary-800">Handwritten</h4>
+                    <p class="text-sm text-secondary-500 mt-1">Manually written documents and notes</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-all-300 p-4 border border-secondary-100">
+                    <div class="h-10 w-10 rounded-md bg-accent-300 text-accent-500 flex items-center justify-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-secondary-800">Invoice</h4>
+                    <p class="text-sm text-secondary-500 mt-1">Bills and payment requests for goods or services</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-all-300 p-4 border border-secondary-100">
+                    <div class="h-10 w-10 rounded-md bg-primary-100 text-primary-700 flex items-center justify-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-secondary-800">Letter</h4>
+                    <p class="text-sm text-secondary-500 mt-1">Formal written communications</p>
+                </div>
+                
+                <!-- Additional categories would continue in the same pattern -->
+                <!-- For brevity, I'm showing 8 of the 16 categories -->
+            </div>
+            
+            <!-- View All Categories Button -->
+            <div class="mt-6 text-center">
+                <button class="inline-flex items-center px-4 py-2 border border-secondary-300 text-sm font-medium rounded-md text-secondary-700 bg-white hover:bg-secondary-50 transition-all-300">
+                    View All Categories
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Simplified Footer -->
+    <footer class="bg-secondary-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <div class="h-10 w-10 rounded-md bg-white flex items-center justify-center text-primary-700 font-bold text-xl">FC</div>
+                    <div class="ml-3">
+                        <h2 class="text-xl font-bold">Fi-Classify</h2>
+                        <p class="text-sm text-secondary-300">Finance Document Classification</p>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-secondary-400 hover:text-secondary-300">
+                        <span class="sr-only">Twitter</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-secondary-400 hover:text-secondary-300">
+                        <span class="sr-only">GitHub</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-secondary-400 hover:text-secondary-300">
+                        <span class="sr-only">LinkedIn</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-secondary-700 text-center md:text-left">
+                <p class="text-base text-secondary-400">
+                    &copy; 2025 Fi-Classify. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple JavaScript for interactivity -->
+    <script>
+        // This would be expanded in a real application
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileInput = document.querySelector('input[type="file"]');
+            const browseButton = document.querySelector('button:contains("Browse Files")');
+            const dropZone = document.querySelector('.border-dashed');
+            
+            if (browseButton && fileInput) {
+                browseButton.addEventListener('click', function() {
+                    fileInput.click();
+                });
+            }
+            
+            if (dropZone) {
+                dropZone.addEventListener('click', function() {
+                    fileInput.click();
+                });
+                
+                // Basic drag and drop functionality
+                dropZone.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('border-primary-400', 'bg-primary-50');
+                });
+                
+                dropZone.addEventListener('dragleave', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('border-primary-400', 'bg-primary-50');
+                });
+                
+                dropZone.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('border-primary-400', 'bg-primary-50');
+                    // Handle file drop
+                });
+            }
+        });
+    </script>
+</body>
+</html>
